@@ -106,6 +106,7 @@ function nvm --argument-names cmd v --description "Node version manager"
             if test $v != "$nvm_current_version"
                 echo -e "Setting $v as default version"
                 set --query nvm_current_version && _nvm_version_deactivate $nvm_current_version
+                set -U nvm_default_version $v
                 _nvm_version_activate $v
             end
 
