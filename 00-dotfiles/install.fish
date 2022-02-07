@@ -19,3 +19,5 @@ end
 if test -f ~/.localrc.fish
 	ln -sf ~/.localrc.fish ~/.config/fish/conf.d/localrc.fish
 end
+
+ln -sf $DOTFILES/fish/config.fish ~/.config/fish/config.fish
