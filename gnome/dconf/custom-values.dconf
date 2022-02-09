@@ -1,0 +1,9 @@
+[custom0]
+binding='<Super>t'
+command='gnome-terminal'
+name='Terminal'
+
+[custom1]
+binding='Print'
+command='flameshot gui'
+name='Flameshot'
