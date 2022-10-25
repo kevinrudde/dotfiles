@@ -46,3 +46,7 @@ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 fisher install gazorby/fish-exa
 fisher install PatrickF1/fzf.fish
 EOF
+
+# Install volta.sh
+echo "Installing Volta"
+curl https://get.volta.sh | bash
