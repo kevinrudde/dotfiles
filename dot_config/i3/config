@@ -44,6 +44,12 @@ exec --no-startup-id nm-applet
 # Start picom
 exec_always --no-startup-id "killall picom; picom -b"
 
+# Start nitrogen (for wallpaper)
+exec_always --no-startup-id nitrogen --restore
+
+# Start dunst (notifications)
+exec_always --no-startup-id dunst
+
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -59,16 +65,13 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# lock screen
+bindsym $mod+l exec --no-startup-id dm-tool lock
+
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+odiaeresis focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up

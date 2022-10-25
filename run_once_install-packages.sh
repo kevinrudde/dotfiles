@@ -11,13 +11,14 @@ function install_with_yay() {
 
 # Install yay
 if ! command -v yay >> /dev/null; then
-    echo "Installing yay..."
+    echo "Installing yay"
     cd ~
     sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 fi
 
 install_with_yay alacritty
 install_with_yay picom
+install_with_yay lightdm-webkit-theme-sequoia-git
 install_with_yay polybar
 install_with_yay rofi
 install_with_yay fish
@@ -26,6 +27,9 @@ install_with_yay fd
 install_with_yay bat
 install_with_yay exa
 install_with_yay nerd-fonts-jetbrains-mono
+install_with_yay reflector
+install_with_yay nitrogen
+install_with_yay dunst
 
 # Change default shell to fish
 if [[ ! $SHELL == *"fish"* ]]; then
@@ -48,5 +52,15 @@ fisher install PatrickF1/fzf.fish
 EOF
 
 # Install volta.sh
-echo "Installing Volta"
-curl https://get.volta.sh | bash
+if ! command -v volta >> /dev/null; then
+    echo "Installing volta..."
+    curl https://get.volta.sh | bash
+fi
+
+# Configure lightdm
+echo "Configuring lightdm"
+sudo sed -i 's/^#greeter-session=.*/greeter-session=lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
+sudo sed -i 's/^webkit_theme.*/webkit_theme        = sequoia/g' /etc/lightdm/lightdm-webkit2-greeter.conf
+
+# Enabling reflector (for a weekly pacman mirrorlist refresh)
+sudo systemctl enable --now reflector.timer
