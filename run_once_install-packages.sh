@@ -1,13 +1,10 @@
 #!/bin/sh
 
 function install_with_yay() {
-  yay --noconfirm -S $1
-}
-
-function install_with_yay_and_check() {
-  if ! command -v $1 >> /dev/null; then
-    echo "Installing $1."
-    cd ~
+  if pacman -Qs $1 > /dev/null ; then
+    echo "The package $1 is already installed"
+  else
+    echo "The package $1 is not installed"
     yay --noconfirm -S $1
   fi
 }
@@ -19,23 +16,29 @@ if ! command -v yay >> /dev/null; then
     sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 fi
 
-install_with_yay_and_check picom
-install_with_yay_and_check polybar
-install_with_yay_and_check rofi
-install_with_yay_and_check fish
-install_with_yay_and_check fzf
-install_with_yay_and_check fd
-install_with_yay_and_check bat
-install_with_yay aur/nerd-fonts-jetbrains-mono
+install_with_yay alacritty
+install_with_yay picom
+install_with_yay polybar
+install_with_yay rofi
+install_with_yay fish
+install_with_yay fzf
+install_with_yay fd
+install_with_yay bat
+install_with_yay exa
+install_with_yay nerd-fonts-jetbrains-mono
 
-# Change shell
-chsh -s /bin/fish
+# Change default shell to fish
+if [[ ! $SHELL == *"fish"* ]]; then
+  chsh -s /bin/fish
+fi
 
 # Install or update starship.rs
+echo "Installing or updating starship.rs"
 curl -sS https://starship.rs/install.sh | sh
 
 # Install fisher and plugins
 # Using here-document and tee to pipe the script to the fish shell
+echo "Installing or updating fisher and plugins"
 tee fish_setup <<EOF | fish
 #!/bin/fish
 
