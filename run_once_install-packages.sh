@@ -16,20 +16,26 @@ if ! command -v yay >> /dev/null; then
     sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 fi
 
+install_with_yay nerd-fonts-jetbrains-mono
+
 install_with_yay alacritty
 install_with_yay picom
 install_with_yay lightdm-webkit-theme-sequoia-git
 install_with_yay polybar
 install_with_yay rofi
+install_with_yay reflector
+install_with_yay nitrogen
+install_with_yay dunst
+
 install_with_yay fish
 install_with_yay fzf
 install_with_yay fd
 install_with_yay bat
 install_with_yay exa
-install_with_yay nerd-fonts-jetbrains-mono
-install_with_yay reflector
-install_with_yay nitrogen
-install_with_yay dunst
+
+install_with_yay docker
+sudo usermod -aG docker $USER
+sudo systemctl enable --now docker
 
 # Change default shell to fish
 if [[ ! $SHELL == *"fish"* ]]; then
