@@ -62,6 +62,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec alacritty
 
+# start chrome
+bindsym $mod+b exec google-chrome-stable
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -115,6 +118,9 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $internalMonitor "eDP-1"
+set $externalMonitor "DP-2"
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -127,6 +133,19 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $internalMonitorWs "0"
+
+workspace $ws1 output $externalMonitor
+workspace $ws2 output $externalMonitor
+workspace $ws3 output $externalMonitor
+workspace $ws4 output $externalMonitor
+workspace $ws5 output $externalMonitor
+workspace $ws6 output $externalMonitor
+workspace $ws7 output $externalMonitor
+workspace $ws8 output $externalMonitor
+workspace $ws9 output $externalMonitor
+workspace $ws10 output $externalMonitor
+workspace $internalMonitorWs output $internalMonitor
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

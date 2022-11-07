@@ -26,12 +26,21 @@ install_with_yay rofi
 install_with_yay reflector
 install_with_yay nitrogen
 install_with_yay dunst
+install_with_yay zscroll-git
+install_with_yay playerctl
 
 install_with_yay fish
 install_with_yay fzf
 install_with_yay fd
 install_with_yay bat
 install_with_yay exa
+
+install_with_yay bluez
+install_with_yay bluez-utils
+install_with_yay blueman
+install_with_yay solaar
+
+sudo systemctl enable --now bluetooth.service
 
 install_with_yay docker
 sudo usermod -aG docker $USER
