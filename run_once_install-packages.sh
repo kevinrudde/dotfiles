@@ -26,8 +26,11 @@ install_with_yay rofi
 install_with_yay reflector
 install_with_yay nitrogen
 install_with_yay dunst
+
 install_with_yay zscroll-git
 install_with_yay playerctl
+
+install_with_yay flameshot
 
 install_with_yay fish
 install_with_yay fzf
