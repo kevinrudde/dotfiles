@@ -24,7 +24,10 @@ gaps outer -10
 
 # Run xrandr for display configuration, you need to create the setup.sh
 # For example you can use ARandR for generating the setup.sh
-exec_always --no-startup-id ~/.screenlayout/setup.sh
+#exec_always --no-startup-id ~/.screenlayout/setup.sh
+
+# Run autorandr for detecting saved display configuration
+exec_always --no-startup-id autorandr --change
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -32,10 +35,6 @@ exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -51,7 +50,7 @@ exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id dunst
 
 # Start solaar
-exec_always --no-startup-id solaar -w hide
+exec --no-startup-id solaar -w hide
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
@@ -168,6 +167,7 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+dead_circumflex workspace number $internalMonitorWs
 
 # move focused container to workspace and switch to that workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1, workspace $ws1
@@ -215,4 +215,5 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
