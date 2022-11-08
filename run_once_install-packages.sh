@@ -23,6 +23,7 @@ install_with_yay picom
 install_with_yay lightdm-webkit-theme-sequoia-git
 install_with_yay polybar
 install_with_yay rofi
+install_with_yay rofi-power-menu
 install_with_yay reflector
 install_with_yay nitrogen
 install_with_yay dunst

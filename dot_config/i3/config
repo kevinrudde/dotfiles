@@ -79,6 +79,7 @@ bindsym $mod+l exec --no-startup-id dm-tool lock
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+p exec --no-startup-id rofi -show p -modi p:rofi-power-menu -lines 6 -width 20
 
 # open flameshot
 bindsym --release Print exec --no-startup-id flameshot gui
