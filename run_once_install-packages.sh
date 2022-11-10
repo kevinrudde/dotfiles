@@ -18,6 +18,8 @@ fi
 
 install_with_yay nerd-fonts-jetbrains-mono
 
+install_with_yay snapper
+
 install_with_yay alacritty
 install_with_yay picom
 install_with_yay lightdm-webkit-theme-sequoia-git
@@ -29,6 +31,7 @@ install_with_yay nitrogen
 install_with_yay dunst
 
 install_with_yay autorandr
+install_with_yay numlockx
 
 install_with_yay zscroll-git
 install_with_yay playerctl
