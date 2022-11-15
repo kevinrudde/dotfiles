@@ -44,7 +44,7 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id "killall picom; picom --experimental-backends -b"
 
 # Start nitrogen (for wallpaper)
-exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id sleep 3 && nitrogen --restore
 
 # Start dunst (notifications)
 exec_always --no-startup-id dunst
