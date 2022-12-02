@@ -30,6 +30,8 @@ install_with_yay reflector
 install_with_yay nitrogen
 install_with_yay dunst
 
+install_with_yay keychain
+
 install_with_yay autorandr
 install_with_yay numlockx
 

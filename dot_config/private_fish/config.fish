@@ -12,3 +12,4 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 # SSH alias for alacritty
 alias ssh="TERM=xterm-256color /usr/bin/ssh"
 
+eval $(keychain --eval --agents ssh --quick --quiet)
