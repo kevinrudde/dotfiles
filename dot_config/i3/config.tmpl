@@ -226,3 +226,10 @@ bindsym $mod+r mode "resize"
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+{{ if (contains "vm" .chezmoi.hostname) }}
+# VM settings
+exec_always --no-startup-id diodon
+exec_always --no-startup-id vmware-user
+exec_always --no-startup-id imwheel -b 45
+{{ end }}
