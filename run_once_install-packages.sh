@@ -20,6 +20,7 @@ install_with_yay nerd-fonts-jetbrains-mono
 
 install_with_yay snapper
 
+install_with_yay tmux
 install_with_yay alacritty
 install_with_yay picom
 install_with_yay lightdm-webkit-theme-sequoia-git
@@ -29,6 +30,15 @@ install_with_yay rofi-power-menu
 install_with_yay reflector
 install_with_yay nitrogen
 install_with_yay dunst
+
+install_with_yay polkit-gnome
+install_with_yay seahorse
+
+install_with_yay thunar
+install_with_yay udisks2
+
+install_with_yay arandr
+install_with_yay autorandr
 
 install_with_yay keychain
 
@@ -40,11 +50,16 @@ install_with_yay playerctl
 
 install_with_yay flameshot
 
+install_with_yay 1password
+install_with_yay google-chrome
+install_with_yay firefox
+
 install_with_yay fish
 install_with_yay fzf
 install_with_yay fd
 install_with_yay bat
 install_with_yay exa
+install_with_yay lazygit
 
 install_with_yay bluez
 install_with_yay bluez-utils
@@ -90,3 +105,12 @@ sudo sed -i 's/^webkit_theme.*/webkit_theme        = sequoia/g' /etc/lightdm/lig
 
 # Enabling reflector (for a weekly pacman mirrorlist refresh)
 sudo systemctl enable --now reflector.timer
+
+
+# Laptop specific stuff
+if [[ $HOSTNAME == "archlinux" ]]; then
+    install_with_yay nvtop
+    install_with_yay bbswitch
+    echo "bbswitch" | sudo tee /etc/modules-load.d/bbswitch.conf
+    echo "options bbswitch load_state=0 unload_state=1" | sudo tee /etc/modprobe.d/bbswitch.conf
+fi
