@@ -9,6 +9,29 @@ function install_with_yay() {
   fi
 }
 
+# https://waylonwalker.com/setting-up-snapper-on-arch/
+function setup_snapper() {
+  if pacman -Qs snapper > /dev/null ; then
+    echo "Snapper is already installed"
+  else
+    echo "Setting up snapper"
+    install_with_yay snapper
+    sudo umount /.snapshots
+    sudo rm -r /.snapshots
+
+    sudo snapper -c root create-config /
+    sudo snapper -c home create-config /home
+
+    sudo btrfs subvolume delete /.snapshots
+    sudo mkdir /.snapshots
+
+    sudo mount -a
+    install_with_yay snap-pac
+    install_with_yay grub-btrfs
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+  fi
+}
+
 # Install yay
 if ! command -v yay >> /dev/null; then
     echo "Installing yay"
@@ -71,6 +94,8 @@ sudo systemctl enable --now bluetooth.service
 install_with_yay docker
 sudo usermod -aG docker $USER
 sudo systemctl enable --now docker
+
+setup_snapper
 
 # Change default shell to fish
 if [[ ! $SHELL == *"fish"* ]]; then
