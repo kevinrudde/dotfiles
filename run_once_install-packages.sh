@@ -18,8 +18,6 @@ fi
 
 install_with_yay nerd-fonts-jetbrains-mono
 
-install_with_yay snapper
-
 install_with_yay tmux
 install_with_yay alacritty
 install_with_yay picom
@@ -60,6 +58,8 @@ install_with_yay fd
 install_with_yay bat
 install_with_yay exa
 install_with_yay lazygit
+
+install_with_yay code
 
 install_with_yay bluez
 install_with_yay bluez-utils
@@ -113,4 +113,15 @@ if [[ $HOSTNAME == "archlinux" ]]; then
     install_with_yay bbswitch
     echo "bbswitch" | sudo tee /etc/modules-load.d/bbswitch.conf
     echo "options bbswitch load_state=0 unload_state=1" | sudo tee /etc/modprobe.d/bbswitch.conf
+fi
+
+# VM specific stuff
+if [[ $HOSTNAME == *-vm*  ]]; then
+    install_with_yay open-vm-tools
+    install_with_yay gtkmm3
+    install_with_yay diodon
+    install_with_yay imwheel
+
+    sudo systemctl enable --now vmware-vmblock-fuse
+    sudo systemctl enable --now vmtoolsd
 fi
