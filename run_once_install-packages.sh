@@ -133,3 +133,11 @@ if [[ $HOSTNAME == *-vm*  ]]; then
     sudo systemctl enable --now vmware-vmblock-fuse
     sudo systemctl enable --now vmtoolsd
 fi
+
+
+# Setting host file
+cat << EOF | sudo tee /etc/hosts
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+127.0.0.1 localhost
+EOF
