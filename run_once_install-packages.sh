@@ -68,6 +68,8 @@ packages=(
   "blueman"
   "solaar"
   "docker"
+  "direnv"
+  "git-delta"
 )
 
 if [[ $HOSTNAME == "archlinux" ]]; then

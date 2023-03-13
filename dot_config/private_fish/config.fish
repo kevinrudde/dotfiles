@@ -13,3 +13,5 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 alias ssh="TERM=xterm-256color /usr/bin/ssh"
 
 eval $(keychain --eval --agents ssh --quick --quiet)
+
+direnv hook fish | source
